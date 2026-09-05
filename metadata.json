@@ -1,0 +1,6 @@
+{
+  "name": "Subly",
+  "description": "Multilingual movie and TV subtitle discovery platform for discovering, organizing, and downloading legally distributable subtitles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
