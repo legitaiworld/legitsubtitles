@@ -19,13 +19,14 @@ import { AIStudioModal } from './components/AIStudioModal';
 import { SubtitleUploadModal } from './components/SubtitleUploadModal';
 import { RequestsView } from './components/RequestsView';
 import { AdminDashboardView } from './components/AdminDashboardView';
+import { SubtitlePullEngine } from './components/SubtitlePullEngine';
 import { ReportModal } from './components/ReportModal';
 import { LegalModal } from './components/LegalModal';
 import { ToastContainer, ToastMessage } from './components/Toast';
 
 export default function App() {
   // Navigation & View State
-  const [currentView, setCurrentView] = useState<'home' | 'browse' | 'languages' | 'requests' | 'admin' | 'detail'>('home');
+  const [currentView, setCurrentView] = useState<'pull' | 'home' | 'browse' | 'languages' | 'requests' | 'admin' | 'detail'>('pull');
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [userRole, setUserRole] = useState<UserRole>('admin'); // Defaults to admin for AI Studio preview convenience
 
@@ -222,32 +223,19 @@ export default function App() {
 
       {/* Main Views */}
       <main className="flex-1">
-        {/* VIEW: HOME */}
-        {currentView === 'home' && (
+        {/* VIEW: PULL SUBTITLES & HOME */}
+        {(currentView === 'home' || currentView === 'pull') && (
           <div>
-            {/* Hero Section */}
-            <HeroSection
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              onSearchSubmit={() => {
-                setCurrentView('browse');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              selectedType={typeFilter}
-              onTypeSelect={(t) => {
-                setTypeFilter(t);
-                setCurrentView('browse');
-              }}
-              popularLanguages={languages}
-              onLanguageSelect={(langCode) => {
-                setLanguageFilter(langCode);
-                setCurrentView('browse');
-              }}
-              totalSubtitlesCount={stats?.subtitles_count || 0}
-            />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+              <SubtitlePullEngine
+                languages={languages}
+                onShowToast={showToast}
+                onSavedToLibrary={loadPlatformData}
+              />
+            </div>
 
             {/* Featured & Trending Section */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
               {/* Recently Added / Popular Titles */}
               <div>
                 <div className="flex items-center justify-between mb-6">

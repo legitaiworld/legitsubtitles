@@ -11,6 +11,7 @@ import {
   aiTranslateSubtitle,
   aiCleanSubtitle,
 } from './server/geminiAi.js';
+import { pullOrGenerateSubtitle } from './server/subtitleApiProvider.js';
 
 dotenv.config();
 
@@ -120,6 +121,96 @@ async function startServer() {
     res.setHeader('X-Subly-Downloads', String(subtitle.downloads));
 
     res.send(subtitle.content);
+  });
+
+  // 8b. Real-Time Subtitle Search & Pull Engine (Uses Subtitle APIs + Gemini Multilingual Localization)
+  app.post('/api/subtitles/pull', async (req, res) => {
+    try {
+      const { movie_title, target_language_name, target_language_code, year, uploaded_srt } = req.body;
+      if (!movie_title || typeof movie_title !== 'string' || movie_title.trim() === '') {
+        return res.status(400).json({ error: 'Movie or series title is required' });
+      }
+
+      const langName = target_language_name || 'English';
+      const langCode = target_language_code || 'en';
+
+      const result = await pullOrGenerateSubtitle({
+        movieTitle: movie_title.trim(),
+        targetLanguageName: langName,
+        targetLanguageCode: langCode,
+        year: year ? Number(year) : undefined,
+        uploadedSrt: typeof uploaded_srt === 'string' ? uploaded_srt : undefined,
+      });
+
+      res.json(result);
+    } catch (err: any) {
+      console.error('Error in /api/subtitles/pull:', err);
+      res.status(500).json({ error: err.message || 'Failed to pull subtitle' });
+    }
+  });
+
+  // 8c. Save Pulled Subtitle to Platform Library
+  app.post('/api/subtitles/save-pulled', (req, res) => {
+    try {
+      const { movieTitle, year, posterUrl, overview, language, content, releaseName } = req.body;
+      if (!movieTitle || !content || !language) {
+        return res.status(400).json({ error: 'Movie title, language, and content are required' });
+      }
+
+      // Check if movie already exists or create new
+      const existingMovies = store.getMovies();
+      let matchedMovie = existingMovies.find(
+        m => m.title.toLowerCase() === movieTitle.toLowerCase()
+      );
+
+      if (!matchedMovie) {
+        matchedMovie = store.addMovie({
+          title: movieTitle,
+          year: year || 2024,
+          description: overview || `Subtitles for ${movieTitle}`,
+          poster_url: posterUrl || 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80',
+          type: 'movie',
+          genres: ['International', 'Drama'],
+          runtime: '105 min',
+        });
+      }
+
+      // Find or create language
+      let targetLang = store.getLanguages().find(
+        l => l.code.toLowerCase() === (language.code || '').toLowerCase()
+      );
+
+      if (!targetLang) {
+        targetLang = {
+          id: `lang-${language.code || 'custom'}`,
+          name: language.name || 'Custom Language',
+          native_name: language.nativeName || language.name,
+          code: language.code || 'custom',
+          flag: language.flag || '🌐',
+        };
+      }
+
+      const newSubtitle = store.addSubtitle({
+        movie_id: matchedMovie.id,
+        language_id: targetLang.id,
+        file_format: 'srt',
+        release_name: releaseName || `${movieTitle}.Multilingual.API.Sync`,
+        version: '1.0.0',
+        quality_score: 99,
+        status: 'approved',
+        uploaded_by: 'Community API Pull',
+        content,
+      });
+
+      res.status(201).json({
+        success: true,
+        movie: matchedMovie,
+        subtitle: newSubtitle,
+      });
+    } catch (err: any) {
+      console.error('Error saving pulled subtitle:', err);
+      res.status(500).json({ error: err.message || 'Failed to save subtitle' });
+    }
   });
 
   // 9. Subtitle File Validation

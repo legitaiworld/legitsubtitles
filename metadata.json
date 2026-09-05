@@ -1,6 +1,6 @@
 {
   "name": "Subly",
-  "description": "Multilingual movie and TV subtitle discovery platform for discovering, organizing, and downloading legally distributable subtitles.",
+  "description": "Multilingual movie subtitle discovery and pulling platform supporting all country official languages including English, Yoruba, Hausa, and Igbo via subtitle APIs.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

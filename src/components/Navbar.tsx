@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Shield, UserCheck } from 'lucide-react';
+import { Search, Shield, UserCheck, Sparkles, DownloadCloud } from 'lucide-react';
 import { UserRole } from '../types';
 
 interface NavbarProps {
@@ -54,15 +54,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Main Nav Links (Desktop) */}
             <nav className="hidden md:flex items-center gap-1 ml-4">
               <button
-                id="nav-home-btn"
-                onClick={() => onNavigate('home')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                  currentView === 'home'
-                    ? 'text-indigo-700 bg-indigo-50'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                id="nav-pull-btn"
+                onClick={() => onNavigate('pull')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                  currentView === 'pull' || currentView === 'home'
+                    ? 'text-indigo-700 bg-indigo-50 shadow-xs'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                Home
+                <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Pull Subtitles (APIs)</span>
               </button>
               <button
                 id="nav-browse-btn"
@@ -183,13 +184,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Navigation bar */}
         <div className="md:hidden flex items-center justify-around py-2 border-t border-slate-100 text-xs bg-white">
           <button
-            id="mobile-nav-home"
-            onClick={() => onNavigate('home')}
+            id="mobile-nav-pull"
+            onClick={() => onNavigate('pull')}
             className={`py-1 px-2 rounded-md font-medium ${
-              currentView === 'home' ? 'text-indigo-700 bg-indigo-50 font-semibold' : 'text-slate-600'
+              currentView === 'pull' || currentView === 'home' ? 'text-indigo-700 bg-indigo-50 font-semibold' : 'text-slate-600'
             }`}
           >
-            Home
+            Pull (APIs)
           </button>
           <button
             id="mobile-nav-browse"

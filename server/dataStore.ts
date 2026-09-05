@@ -2,16 +2,25 @@ import { Movie, Language, Subtitle, SubtitleRequest, SubtitleReport, PlatformSta
 
 export const initialLanguages: Language[] = [
   { id: 'lang-en', name: 'English', native_name: 'English', code: 'en', flag: '🇺🇸' },
+  { id: 'lang-yo', name: 'Yoruba', native_name: 'Èdè Yorùbá', code: 'yo', flag: '🇳🇬' },
+  { id: 'lang-ha', name: 'Hausa', native_name: 'Harshen Hausa', code: 'ha', flag: '🇳🇬' },
+  { id: 'lang-ig', name: 'Igbo', native_name: 'Asụsụ Igbo', code: 'ig', flag: '🇳🇬' },
+  { id: 'lang-sw', name: 'Swahili', native_name: 'Kiswahili', code: 'sw', flag: '🇰🇪' },
   { id: 'lang-es', name: 'Spanish', native_name: 'Español', code: 'es', flag: '🇪🇸' },
   { id: 'lang-fr', name: 'French', native_name: 'Français', code: 'fr', flag: '🇫🇷' },
+  { id: 'lang-ar', name: 'Arabic', native_name: 'العربية', code: 'ar', flag: '🇸🇦' },
+  { id: 'lang-pt', name: 'Portuguese', native_name: 'Português', code: 'pt', flag: '🇧🇷' },
   { id: 'lang-de', name: 'German', native_name: 'Deutsch', code: 'de', flag: '🇩🇪' },
   { id: 'lang-ja', name: 'Japanese', native_name: '日本語', code: 'ja', flag: '🇯🇵' },
-  { id: 'lang-pt', name: 'Portuguese', native_name: 'Português', code: 'pt', flag: '🇧🇷' },
-  { id: 'lang-it', name: 'Italian', native_name: 'Italiano', code: 'it', flag: '🇮🇹' },
   { id: 'lang-hi', name: 'Hindi', native_name: 'हिन्दी', code: 'hi', flag: '🇮🇳' },
   { id: 'lang-zh', name: 'Chinese', native_name: '中文', code: 'zh', flag: '🇨🇳' },
-  { id: 'lang-ar', name: 'Arabic', native_name: 'العربية', code: 'ar', flag: '🇸🇦' },
   { id: 'lang-ko', name: 'Korean', native_name: '한국어', code: 'ko', flag: '🇰🇷' },
+  { id: 'lang-it', name: 'Italian', native_name: 'Italiano', code: 'it', flag: '🇮🇹' },
+  { id: 'lang-ru', name: 'Russian', native_name: 'Русский', code: 'ru', flag: '🇷🇺' },
+  { id: 'lang-id', name: 'Indonesian', native_name: 'Bahasa Indonesia', code: 'id', flag: '🇮🇩' },
+  { id: 'lang-tr', name: 'Turkish', native_name: 'Türkçe', code: 'tr', flag: '🇹🇷' },
+  { id: 'lang-zu', name: 'Zulu', native_name: 'isiZulu', code: 'zu', flag: '🇿🇦' },
+  { id: 'lang-am', name: 'Amharic', native_name: 'አማርኛ', code: 'am', flag: '🇪🇹' },
 ];
 
 export const initialMovies: Movie[] = [
@@ -227,6 +236,114 @@ Lo hacemos por mamá.
 ¡Johnny, detente!
 ¡Por favor, no me dejes aquí sola!`;
 
+export const sampleSrtNightLivingDeadYo = `1
+00:00:15,500 --> 00:00:18,200
+Wọ́n yẹ kí wọ́n máa ṣe àyípadà àkókò ní ọjọ́ àkọ́kọ́ ẹ̀rùn.
+
+2
+00:00:19,000 --> 00:00:21,400
+Kí ni? Agogo mẹ́jọ alẹ́ kọjá, síbẹ̀ ìmọ́lẹ̀ ṣì wà lóde.
+
+3
+00:00:22,100 --> 00:00:25,300
+Àkókò ẹ̀rùn yìí ló ń fa gbogbo nǹkan wọ̀nyí.
+
+4
+00:00:28,000 --> 00:00:31,200
+Mi ò mọ ìdí tí a fi ní láti wá sí ibi tó jìnnà tó báyìí.
+
+5
+00:00:32,000 --> 00:00:35,400
+Johnny, ẹ̀ẹ̀kan lọ́dún péré ni. A ń ṣe é nítorí Màmá ni.
+
+6
+00:00:38,500 --> 00:00:41,200
+Wọ́n ń bọ̀ wá mú ẹ, Barbra!
+
+7
+00:00:42,000 --> 00:00:44,500
+Dákun dúró, Johnny! Ò ń hùwà bí ọmọdé kékeré.
+
+8
+00:00:45,100 --> 00:00:48,000
+Wọ́n ń bọ̀ wá mú ẹ... Wò ó! Ọ̀kan lára wọn ń bọ̀ níbẹ̀ yẹn!
+
+9
+00:00:54,200 --> 00:00:58,000
+Johnny, dákun dúró! Má fi mí sílẹ̀ níbí nìkan!`;
+
+export const sampleSrtNightLivingDeadHa = `1
+00:00:15,500 --> 00:00:18,200
+Ya kamata a ce sun canza lokaci a ranar farko ta bazara.
+
+2
+00:00:19,000 --> 00:00:21,400
+Me? Karfe takwas na dare ne amma har yanzu akwai haske a waje.
+
+3
+00:00:22,100 --> 00:00:25,300
+Canjin lokacin bazara ne ke haddasa duk wannan.
+
+4
+00:00:28,000 --> 00:00:31,200
+Ban gane dalilin da ya sa dole mu zo nan da nisa ba.
+
+5
+00:00:32,000 --> 00:00:35,400
+Johnny, sau daya ne a shekara. Muna yi ne saboda Mama.
+
+6
+00:00:38,500 --> 00:00:41,200
+Suna zuwa su kama ki, Barbra!
+
+7
+00:00:42,000 --> 00:00:44,500
+Daina, Johnny! Kana nuna halin yara.
+
+8
+00:00:45,100 --> 00:00:48,000
+Suna zuwa su same ki... Duba! Ga daya daga cikinsu can yana tahowa!
+
+9
+00:00:54,200 --> 00:00:58,000
+Johnny, tsaya! Don Allah kada ka bar ni a nan ni kadai!`;
+
+export const sampleSrtNightLivingDeadIg = `1
+00:00:15,500 --> 00:00:18,200
+Ha kwesịrị ime mgbanwe oge n'ụbọchị mbụ nke oge ọkọchị.
+
+2
+00:00:19,000 --> 00:00:21,400
+Gịnị? Ọ bụ elekere asatọ nke abalị mana anwụ ka na-achakwara n'èzí.
+
+3
+00:00:22,100 --> 00:00:25,300
+Oge ọkọchị a bụ ihe na-akpata ya niile.
+
+4
+00:00:28,000 --> 00:00:31,200
+Aghọtaghị m ihe mere anyị ji kwesị ịbịa ebe a dị anya.
+
+5
+00:00:32,000 --> 00:00:35,400
+Johnny, ọ bụ naanị otu ugboro n'afọ. Anyị na-emere ya Nne anyị.
+
+6
+00:00:38,500 --> 00:00:41,200
+Ha na-abịa ijide gị, Barbra!
+
+7
+00:00:42,000 --> 00:00:44,500
+Kwụsị, Johnny! Ị na-akpa agwa dị ka nwata.
+
+8
+00:00:45,100 --> 00:00:48,000
+Ha na-abịa maka gị... Lee! Otu n'ime ha na-abịa ebe ahụ!
+
+9
+00:00:54,200 --> 00:00:58,000
+Johnny, biko kwụsị! Biko ahapụla m ebe a naanị m!`;
+
 export const sampleSrtCharadeEn = `1
 00:00:12,000 --> 00:00:15,500
 Do you know what's wrong with you, Mr. Joshua?
@@ -431,6 +548,54 @@ export const initialSubtitles: Subtitle[] = [
     episode: 1,
     created_at: '2026-08-16T18:00:00Z',
     updated_at: '2026-08-16T18:00:00Z',
+  },
+  {
+    id: 'sub-yo-1',
+    movie_id: 'movie-1',
+    language_id: 'lang-yo',
+    file_path: 'subtitles/movie-1/yo/Night_of_the_Living_Dead_1968.Yoruba.srt',
+    file_format: 'srt',
+    release_name: 'Night.of.the.Living.Dead.1968.720p.BDRip.Yoruba.v1',
+    version: '1.0.0',
+    quality_score: 99,
+    downloads: 1420,
+    status: 'approved',
+    uploaded_by: 'NollywoodLinguist',
+    content: sampleSrtNightLivingDeadYo,
+    created_at: '2026-08-18T10:00:00Z',
+    updated_at: '2026-08-18T10:00:00Z',
+  },
+  {
+    id: 'sub-ha-1',
+    movie_id: 'movie-1',
+    language_id: 'lang-ha',
+    file_path: 'subtitles/movie-1/ha/Night_of_the_Living_Dead_1968.Hausa.srt',
+    file_format: 'srt',
+    release_name: 'Night.of.the.Living.Dead.1968.720p.BDRip.Hausa.v1',
+    version: '1.0.0',
+    quality_score: 98,
+    downloads: 1180,
+    status: 'approved',
+    uploaded_by: 'KannywoodTranslator',
+    content: sampleSrtNightLivingDeadHa,
+    created_at: '2026-08-19T14:30:00Z',
+    updated_at: '2026-08-19T14:30:00Z',
+  },
+  {
+    id: 'sub-ig-1',
+    movie_id: 'movie-1',
+    language_id: 'lang-ig',
+    file_path: 'subtitles/movie-1/ig/Night_of_the_Living_Dead_1968.Igbo.srt',
+    file_format: 'srt',
+    release_name: 'Night.of.the.Living.Dead.1968.720p.BDRip.Igbo.v1',
+    version: '1.0.0',
+    quality_score: 98,
+    downloads: 940,
+    status: 'approved',
+    uploaded_by: 'IgboCinemaArchivist',
+    content: sampleSrtNightLivingDeadIg,
+    created_at: '2026-08-20T16:15:00Z',
+    updated_at: '2026-08-20T16:15:00Z',
   },
   {
     id: 'sub-pending-1',
